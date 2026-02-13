@@ -1,5 +1,10 @@
 "use client";
 
+import { useRef, useEffect } from "react";
+import { useRouter, useParams } from "next/navigation";
+import Link from "next/link";
+import Header from "@/components/Header";
+import { useBooking } from "@/context/BookingContext";
 import { supabase } from "@/lib/supabase";
 import useSWR from "swr";
 

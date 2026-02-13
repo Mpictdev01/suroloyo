@@ -17,10 +17,11 @@ export default function ReportsPage() {
     const handleGenerateReport = async () => {
         setIsGenerating(true);
         try {
-            // Fetch data based on report type
-            let query = supabase
-                .from("bookings")
-                .select(`
+					// Fetch data based on report type
+					let query = supabase
+						.from("bookings")
+						.select(
+							`
                     id,
                     booking_date,
                     total_price,
@@ -28,42 +29,53 @@ export default function ReportsPage() {
                     payment_status,
                     created_at,
                     users (name, email)
-                `)
-                .gte("booking_date", dateRange.start)
-                .lte("booking_date", dateRange.end);
+                `,
+						)
+						.gte("booking_date", dateRange.start)
+						.lte("booking_date", dateRange.end);
 
-            const { data, error } = await query;
+					const { data, error } = await query;
 
-            if (error) throw error;
+					if (error) throw error;
 
-            if (!data || data.length === 0) {
-                toast.error("Tidak ada data untuk periode ini.");
-                return;
-            }
+					if (!data || data.length === 0) {
+						toast.error("Tidak ada data untuk periode ini.");
+						return;
+					}
 
-            // Transform data for Excel
-            const excelData = data.map(item => ({
-                "ID Booking": item.id,
-                "Nama Pendaki": item.users?.name || "N/A",
-                "Email": item.users?.email || "N/A",
-                "Tanggal Pendakian": new Date(item.booking_date).toLocaleDateString("id-ID"),
-                "Total Bayar": item.total_price,
-                "Status Booking": item.status,
-                "Status Pembayaran": item.payment_status,
-                "Tanggal Transaksi": new Date(item.created_at).toLocaleString("id-ID")
-            }));
+					// Transform data for Excel
+					// Transform data for Excel
+					const excelData = data.map((item) => {
+						const user = Array.isArray(item.users) ? item.users[0] : item.users;
+						return {
+							"ID Booking": item.id,
+							"Nama Pendaki": user?.name || "N/A",
+							Email: user?.email || "N/A",
+							"Tanggal Pendakian": new Date(
+								item.booking_date,
+							).toLocaleDateString("id-ID"),
+							"Total Bayar": item.total_price,
+							"Status Booking": item.status,
+							"Status Pembayaran": item.payment_status,
+							"Tanggal Transaksi": new Date(item.created_at).toLocaleString(
+								"id-ID",
+							),
+						};
+					});
 
-            // Create workbook and worksheet
-            const ws = XLSX.utils.json_to_sheet(excelData);
-            const wb = XLSX.utils.book_new();
-            XLSX.utils.book_append_sheet(wb, ws, "Laporan " + reportType);
+					// Create workbook and worksheet
+					const ws = XLSX.utils.json_to_sheet(excelData);
+					const wb = XLSX.utils.book_new();
+					XLSX.utils.book_append_sheet(wb, ws, "Laporan " + reportType);
 
-            // Generate file and trigger download
-            XLSX.writeFile(wb, `Laporan_${reportType}_${dateRange.start}_to_${dateRange.end}.xlsx`);
+					// Generate file and trigger download
+					XLSX.writeFile(
+						wb,
+						`Laporan_${reportType}_${dateRange.start}_to_${dateRange.end}.xlsx`,
+					);
 
-            toast.success(`Laporan ${reportType} berhasil di-download!`);
-
-        } catch (err: any) {
+					toast.success(`Laporan ${reportType} berhasil di-download!`);
+				} catch (err: any) {
             toast.error("Gagal men-generate laporan: " + err.message);
         } finally {
             setIsGenerating(false);
