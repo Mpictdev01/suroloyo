@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Payment Invoice - Booking Online Suroloyo</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#3b82f6", // Electric Blue
+                        "primary-hover": "#2563eb", // Darker Blue for hover
+                        "background-light": "#f8fafc", // Slate 50
+                        "background-dark": "#0f172a", // Deep Slate Blue (Slate 900)
+                        "surface-dark": "#1e293b", // Slate 800
+                        "surface-darker": "#020617", // Slate 950
+                        "secondary-text": "#94a3b8", // Slate 400
+                        "border-color": "#334155", // Slate 700
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display min-h-screen flex flex-col">
+<header class="sticky top-0 z-50 w-full border-b border-solid border-border-color bg-surface-darker">
+<div class="flex items-center justify-between w-full max-w-7xl px-6 py-4 mx-auto md:px-10 whitespace-nowrap">
+<div class="flex items-center gap-3 text-white">
+<div class="flex items-center justify-center border rounded-lg size-10 bg-primary/10 text-primary border-primary/20 shadow-[0_0_15px_rgba(59,130,246,0.2)]">
+<span class="material-symbols-outlined text-[26px]">landscape</span>
+</div>
+<div class="flex flex-col">
+<h2 class="text-xl font-bold leading-none tracking-tight text-white">Suroloyo</h2>
+<span class="text-[10px] font-medium tracking-wide uppercase text-secondary-text mt-0.5">Booking System</span>
+</div>
+</div>
+<nav class="hidden gap-8 md:flex items-center">
+<a class="text-sm font-bold text-white transition-colors hover:text-primary" href="#">Beranda</a>
+<a class="text-sm font-medium transition-colors text-secondary-text hover:text-primary" href="#">Cek Kuota</a>
+<a class="text-sm font-medium transition-colors text-secondary-text hover:text-primary" href="#">Panduan</a>
+<a class="text-sm font-medium transition-colors text-secondary-text hover:text-primary" href="#">SOP</a>
+</nav>
+<button class="md:hidden text-secondary-text hover:text-white transition-colors">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</header>
+<main class="flex-1 flex flex-col items-center py-10 px-4 md:px-10 overflow-y-auto">
+<div class="w-full max-w-[640px] flex flex-col gap-6">
+<div class="flex flex-col items-center gap-4 text-center">
+<div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/30 shadow-[0_0_10px_rgba(59,130,246,0.15)]">
+<span class="material-symbols-outlined text-primary text-sm">schedule</span>
+<span class="text-primary text-sm font-bold uppercase tracking-wide">Menunggu Pembayaran</span>
+</div>
+<h1 class="text-white text-3xl font-bold leading-tight">Selesaikan pembayaran dalam</h1>
+<div class="flex gap-3 py-2">
+<div class="flex flex-col items-center gap-2">
+<div class="flex h-16 w-16 items-center justify-center rounded-xl bg-surface-dark border border-primary/30 shadow-inner">
+<p class="text-primary text-2xl font-bold font-mono">01</p>
+</div>
+<p class="text-secondary-text text-xs font-medium uppercase">Jam</p>
+</div>
+<div class="flex h-16 items-center justify-center text-primary/50 text-2xl font-bold">:</div>
+<div class="flex flex-col items-center gap-2">
+<div class="flex h-16 w-16 items-center justify-center rounded-xl bg-surface-dark border border-primary/30 shadow-inner">
+<p class="text-primary text-2xl font-bold font-mono">59</p>
+</div>
+<p class="text-secondary-text text-xs font-medium uppercase">Menit</p>
+</div>
+<div class="flex h-16 items-center justify-center text-primary/50 text-2xl font-bold">:</div>
+<div class="flex flex-col items-center gap-2">
+<div class="flex h-16 w-16 items-center justify-center rounded-xl bg-surface-dark border border-primary/30 shadow-inner">
+<p class="text-primary text-2xl font-bold font-mono">59</p>
+</div>
+<p class="text-secondary-text text-xs font-medium uppercase">Detik</p>
+</div>
+</div>
+<p class="text-secondary-text text-sm">Batas akhir pembayaran: <span class="text-white font-medium">Senin, 24 Oktober 2023 14:30 WIB</span></p>
+</div>
+<div class="bg-surface-dark border border-border-color rounded-2xl overflow-hidden shadow-2xl shadow-black/50">
+<div class="p-6 border-b border-border-color bg-surface-darker flex justify-between items-center">
+<div>
+<p class="text-secondary-text text-xs font-medium mb-1">Total Tagihan</p>
+<p class="text-white text-2xl font-bold">Rp 150.000</p>
+</div>
+<div class="text-right">
+<p class="text-secondary-text text-xs font-medium mb-1">Order ID</p>
+<p class="text-primary text-sm font-mono tracking-wide">#SRL-2023-8892</p>
+</div>
+</div>
+<div class="p-6 flex flex-col gap-6">
+<div class="flex items-center gap-4">
+<div class="w-16 h-10 bg-white rounded flex items-center justify-center overflow-hidden p-1 border-2 border-primary/20">
+<img alt="BRI Bank Logo" class="object-contain w-full h-full" data-alt="Blue Bank BRI logo on white background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxMSV205vU8qPS_xmIT-Us5GVSp5wx2ZvQXaUq4zK1z6iEhGpHcdvBzXF6mXk2qWLntg0zR9GLCOg1Mlnz_LzFgAtbm_7qrfp6U6a7V9Ep726akt4Hi6FnBMRGQzRTUWKsFofkMXflJYcLSDBvLdD5YMvLsn54JJG6hqRL9wLqJZG3srHyhhlxmHRHvhx2J02hW88QECT19HF_-SBNXMYob0UrupuXVdwbW71xxvrs0fznsfks_OXqCRYaWh6nAj7SuyXCwJdkhj8"/>
+</div>
+<div>
+<p class="text-white font-bold text-lg">Bank BRI</p>
+<p class="text-primary/80 text-sm">Virtual Account</p>
+</div>
+</div>
+<div class="bg-primary/5 rounded-xl p-4 border border-primary/30 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 relative overflow-hidden group/va">
+<div class="absolute -top-10 -right-10 w-32 h-32 bg-primary/10 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex flex-col gap-1 relative z-10">
+<span class="text-secondary-text text-xs font-medium uppercase tracking-wider">Nomor Virtual Account</span>
+<span class="text-primary text-2xl md:text-3xl font-mono font-bold tracking-wider drop-shadow-sm">8800 1234 5678 9000</span>
+</div>
+<button class="relative z-10 flex items-center gap-2 bg-surface-darker hover:bg-surface-dark text-white border border-border-color hover:border-primary/50 px-4 py-2 rounded-lg transition-all active:scale-95 whitespace-nowrap group shadow-lg">
+<span class="material-symbols-outlined text-lg text-primary group-hover:scale-110 transition-transform">content_copy</span>
+<span class="text-sm font-bold">Salin</span>
+</button>
+</div>
+</div>
+<div class="border-t border-border-color">
+<div class="p-4 bg-surface-darker/50">
+<h3 class="text-white font-bold text-sm">Cara Pembayaran</h3>
+</div>
+<details class="group border-b border-border-color last:border-0" open="">
+<summary class="flex items-center justify-between p-4 cursor-pointer hover:bg-surface-dark/50 transition-colors select-none">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">atm</span>
+<span class="text-white font-medium">ATM BRI</span>
+</div>
+<span class="material-symbols-outlined text-secondary-text group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="px-4 pb-4 pl-11 text-secondary-text text-sm leading-relaxed">
+<ol class="list-decimal space-y-2 ml-4">
+<li>Masukkan Kartu ATM BRI dan PIN Anda.</li>
+<li>Pilih menu <strong class="text-white">Transaksi Lain &gt; Pembayaran &gt; Lainnya &gt; BRIVA</strong>.</li>
+<li>Masukkan Nomor Virtual Account <strong class="text-primary bg-primary/10 px-1 rounded">8800 1234 5678 9000</strong>.</li>
+<li>Di halaman konfirmasi, pastikan detil pembayaran sudah sesuai.</li>
+<li>Ikuti instruksi untuk menyelesaikan transaksi.</li>
+<li>Simpan struk transaksi sebagai bukti pembayaran.</li>
+</ol>
+</div>
+</details>
+<details class="group border-b border-border-color last:border-0">
+<summary class="flex items-center justify-between p-4 cursor-pointer hover:bg-surface-dark/50 transition-colors select-none">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">smartphone</span>
+<span class="text-white font-medium">Mobile Banking BRI (BRImo)</span>
+</div>
+<span class="material-symbols-outlined text-secondary-text group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="px-4 pb-4 pl-11 text-secondary-text text-sm leading-relaxed">
+<ol class="list-decimal space-y-2 ml-4">
+<li>Login ke aplikasi BRImo.</li>
+<li>Pilih menu <strong class="text-white">Pembayaran &gt; BRIVA</strong>.</li>
+<li>Masukkan Nomor Virtual Account <strong class="text-primary bg-primary/10 px-1 rounded">8800 1234 5678 9000</strong>.</li>
+<li>Masukkan PIN Anda.</li>
+<li>Tekan "OK" untuk melanjutkan transaksi.</li>
+<li>Transaksi berhasil.</li>
+</ol>
+</div>
+</details>
+<details class="group border-b border-border-color last:border-0">
+<summary class="flex items-center justify-between p-4 cursor-pointer hover:bg-surface-dark/50 transition-colors select-none">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">storefront</span>
+<span class="text-white font-medium">Minimarket (Indomaret / Alfamart)</span>
+</div>
+<span class="material-symbols-outlined text-secondary-text group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="px-4 pb-4 pl-11 text-secondary-text text-sm leading-relaxed">
+<ol class="list-decimal space-y-2 ml-4">
+<li>Pergi ke gerai Indomaret atau Alfamart terdekat.</li>
+<li>Beritahu kasir bahwa Anda ingin melakukan pembayaran <strong class="text-white">BRIVA</strong>.</li>
+<li>Berikan Nomor Virtual Account <strong class="text-primary bg-primary/10 px-1 rounded">8800 1234 5678 9000</strong> kepada kasir.</li>
+<li>Bayar sesuai jumlah tagihan.</li>
+<li>Simpan struk pembayaran sebagai bukti yang sah.</li>
+</ol>
+</div>
+</details>
+</div>
+</div>
+<div class="flex flex-col gap-3">
+<button class="w-full h-12 flex items-center justify-center gap-2 rounded-xl bg-primary text-white font-bold text-base hover:bg-primary-hover transition-colors shadow-lg shadow-primary/25 ring-1 ring-primary/50">
+<span class="material-symbols-outlined">check_circle</span>
+                    Cek Status Pembayaran
+                </button>
+<button class="w-full h-12 flex items-center justify-center gap-2 rounded-xl text-secondary-text font-medium text-sm hover:text-white hover:bg-surface-dark border border-transparent hover:border-border-color transition-all">
+                    Batalkan Pesanan
+                </button>
+</div>
+<div class="text-center mt-2">
+<p class="text-xs text-secondary-text/60">Booking ID: SRL-2023-8892 • © 2023 Booking Online Suroloyo</p>
+</div>
+</div>
+</main>
+
+</body></html>
