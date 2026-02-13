@@ -63,7 +63,7 @@ UPDATE users
 SET role = 'admin', 
     name = 'Admin Suroloyo',
     email = 'admin@suroloyo.com'
-WHERE id = 'USER_UID';
+WHERE id = 'd49a79a5-be98-4795-9b53-43335fdcb24f';
 ```
 
 ---
